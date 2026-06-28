@@ -1,0 +1,264 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Tenant {
+  id           String    @id @default(cuid())
+  name         String
+  slug         String    @unique
+  timezone     String    @default("America/Sao_Paulo")
+  defaultTheme String    @default("rose")
+  status       String    @default("active")
+  planId       String?
+  planStatus   String    @default("trial")
+  trialEndsAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  users         User[]
+  roles         Role[]
+  clients       Client[]
+  services      Service[]
+  categories    ServiceCategory[]
+  professionals Professional[]
+  appointments  Appointment[]
+  settings      TenantSetting?
+  plan          Plan?             @relation(fields: [planId], references: [id])
+}
+
+model Plan {
+  id               String   @id @default(cuid())
+  key              String   @unique
+  name             String
+  priceCents       Int
+  interval         String   @default("month")
+  maxProfessionals Int?
+  maxServices      Int?
+  maxClients       Int?
+  highlighted      Boolean  @default(false)
+  sortOrder        Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  tenants Tenant[]
+}
+
+model User {
+  id           String    @id @default(cuid())
+  tenantId     String
+  roleId       String?
+  name         String
+  email        String
+  passwordHash String
+  phone        String?
+  avatarUrl    String?
+  status       String    @default("active")
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+
+  tenant       Tenant    @relation(fields: [tenantId], references: [id])
+  role         Role?     @relation(fields: [roleId], references: [id])
+  professional Professional?
+  sessions     Session[]
+
+  @@unique([tenantId, email])
+  @@index([tenantId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  userId       String
+  refreshToken String   @unique
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Role {
+  id              String   @id @default(cuid())
+  tenantId        String
+  name            String
+  description     String?
+  permissionsJson String   @default("{}")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id])
+  users  User[]
+
+  @@unique([tenantId, name])
+}
+
+model Client {
+  id        String    @id @default(cuid())
+  tenantId  String
+  name      String
+  phone     String?
+  email     String?
+  birthDate DateTime?
+  notes     String?
+  status    String    @default("active")
+  tag       String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  tenant       Tenant        @relation(fields: [tenantId], references: [id])
+  appointments Appointment[]
+
+  @@index([tenantId])
+  @@index([tenantId, name])
+}
+
+model ServiceCategory {
+  id        String   @id @default(cuid())
+  tenantId  String
+  name      String
+  icon      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tenant   Tenant    @relation(fields: [tenantId], references: [id])
+  services Service[]
+
+  @@unique([tenantId, name])
+}
+
+model Service {
+  id          String    @id @default(cuid())
+  tenantId    String
+  categoryId  String?
+  name        String
+  description String?
+  durationMin Int
+  priceCents  Int
+  color       String?
+  icon        String?
+  status      String    @default("active")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  tenant               Tenant                @relation(fields: [tenantId], references: [id])
+  category             ServiceCategory?      @relation(fields: [categoryId], references: [id])
+  professionalServices ProfessionalService[]
+  appointments         Appointment[]
+
+  @@index([tenantId])
+  @@index([tenantId, name])
+}
+
+model Professional {
+  id          String    @id @default(cuid())
+  tenantId    String
+  userId      String?   @unique
+  name        String
+  phone       String?
+  email       String?
+  roleTitle   String?
+  bio         String?
+  color       String?
+  initials    String?
+  status      String    @default("active")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  tenant               Tenant                @relation(fields: [tenantId], references: [id])
+  user                 User?                 @relation(fields: [userId], references: [id])
+  professionalServices ProfessionalService[]
+  workingHours         WorkingHour[]
+  appointments         Appointment[]
+
+  @@index([tenantId])
+}
+
+model ProfessionalService {
+  id             String @id @default(cuid())
+  tenantId       String
+  professionalId String
+  serviceId      String
+
+  professional Professional @relation(fields: [professionalId], references: [id])
+  service      Service      @relation(fields: [serviceId], references: [id])
+
+  @@unique([professionalId, serviceId])
+  @@index([tenantId])
+}
+
+model WorkingHour {
+  id             String  @id @default(cuid())
+  tenantId       String
+  professionalId String
+  weekday        Int
+  startTime      String
+  endTime        String
+  isActive       Boolean @default(true)
+
+  professional Professional @relation(fields: [professionalId], references: [id])
+
+  @@index([tenantId, professionalId])
+}
+
+model Appointment {
+  id             String    @id @default(cuid())
+  tenantId       String
+  clientId       String
+  serviceId      String
+  professionalId String
+  startsAt       DateTime
+  endsAt         DateTime
+  status         String    @default("scheduled")
+  notes          String?
+  priceCents     Int
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  canceledAt     DateTime?
+
+  tenant       Tenant       @relation(fields: [tenantId], references: [id])
+  client       Client       @relation(fields: [clientId], references: [id])
+  service      Service      @relation(fields: [serviceId], references: [id])
+  professional Professional @relation(fields: [professionalId], references: [id])
+
+  @@index([tenantId, startsAt])
+  @@index([tenantId, professionalId, startsAt])
+  @@index([tenantId, clientId])
+}
+
+model TenantSetting {
+  id                    String   @id @default(cuid())
+  tenantId              String   @unique
+  brandName             String
+  theme                 String   @default("rose")
+  whatsappEnabled       Boolean  @default(false)
+  appointmentConfirmMsg Boolean  @default(true)
+  reminder24h           Boolean  @default(true)
+  reminder1h            Boolean  @default(true)
+  reviewRequest         Boolean  @default(false)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  tenantId   String
+  userId     String?
+  action     String
+  entity     String
+  entityId   String?
+  beforeJson String?
+  afterJson  String?
+  createdAt  DateTime @default(now())
+
+  @@index([tenantId, createdAt])
+}

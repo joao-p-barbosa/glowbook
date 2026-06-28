@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="rose">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Glowbook — Agenda e gestão para salões e estúdios de beleza</title>
+  <meta name="description" content="Glowbook é a plataforma de agenda online, clientes, serviços, equipe e lembretes por WhatsApp para salões, estúdios e profissionais de beleza." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c9958a'%3E%3Cpath d='M12 3l1.9 4.6L19 9.2l-3.6 3.3.9 5L12 14.9 7.7 17.5l.9-5L5 9.2l5.1-1.6z'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="#top" aria-label="Glowbook — início">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3l1.9 4.6L19 9.2l-3.6 3.3.9 5L12 14.9 7.7 17.5l.9-5L5 9.2l5.1-1.6z" />
+        </svg>
+        Glowbook
+      </a>
+
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="#recursos">Recursos</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#planos">Planos</a>
+        <a href="#footer">Contato</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="theme-switch" role="group" aria-label="Escolher tema visual">
+          <button class="theme-dot theme-dot--rose"      data-theme-btn="rose"      title="Rose"      aria-label="Tema Rose"></button>
+          <button class="theme-dot theme-dot--blush"     data-theme-btn="blush"     title="Blush"     aria-label="Tema Blush"></button>
+          <button class="theme-dot theme-dot--sage"      data-theme-btn="sage"      title="Sage"      aria-label="Tema Sage"></button>
+          <button class="theme-dot theme-dot--midnight"  data-theme-btn="midnight"  title="Midnight"  aria-label="Tema Midnight"></button>
+          <button class="theme-dot theme-dot--champagne" data-theme-btn="champagne" title="Champagne" aria-label="Tema Champagne"></button>
+          <button class="theme-dot theme-dot--lilac"     data-theme-btn="lilac"     title="Lilac"     aria-label="Tema Lilac"></button>
+        </div>
+        <a class="btn btn--primary" href="http://localhost:5173/login">Acessar plataforma</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow">Agenda &amp; gestão para beleza</span>
+          <h1 class="display hero__title">A agenda do seu <em>estúdio</em>, organizada e sem furos.</h1>
+          <p class="hero__sub">Glowbook reúne agenda, clientes, serviços, equipe e lembretes por WhatsApp em um só lugar — feito para salões, estúdios e profissionais de beleza.</p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="http://localhost:5173/signup">Começar grátis</a>
+            <a class="btn btn--ghost" href="#planos">Ver planos</a>
+          </div>
+          <p class="hero__note">Sem cartão de crédito · 6 temas visuais · pronto para celular, tablet e desktop.</p>
+        </div>
+
+        <div class="hero__shot">
+          <img src="./assets/screenshot-agenda.png" width="1440" height="810"
+               alt="Tela da agenda semanal do Glowbook com agendamentos coloridos por profissional." />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TRUST STRIP ===================== -->
+    <section class="trust">
+      <div class="container trust__row">
+        <div class="trust__item"><div class="trust__num">+1.200</div><div class="trust__label">agendamentos por mês</div></div>
+        <div class="trust__item"><div class="trust__num">-38%</div><div class="trust__label">de faltas com lembretes</div></div>
+        <div class="trust__item"><div class="trust__num">6</div><div class="trust__label">temas visuais</div></div>
+        <div class="trust__item"><div class="trust__num">4,9 ★</div><div class="trust__label">avaliação dos estúdios</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURES ===================== -->
+    <section class="section" id="recursos">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Tudo em um só lugar</span>
+          <h2 class="display section__title">Recursos que cuidam do dia a dia</h2>
+          <p class="section__sub">Da marcação ao pós-atendimento — o Glowbook acompanha cada etapa do seu estúdio.</p>
+        </div>
+
+        <div class="features">
+
+          <!-- Agenda -->
+          <article class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4M7.5 13h3M13.5 13h3M7.5 16.5h3"/>
+              </svg>
+            </div>
+            <h3>Agenda inteligente</h3>
+            <p>Visão semanal por profissional, criação rápida de horários e bloqueio automático de conflitos. Compacta no celular, completa no desktop.</p>
+          </article>
+
+          <!-- Clientes -->
+          <article class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c0-3.6 3.4-6 7.5-6s7.5 2.4 7.5 6"/>
+              </svg>
+            </div>
+            <h3>Clientes &amp; histórico</h3>
+            <p>Ficha completa com contatos, observações, tags (VIP, novo, recorrente) e todo o histórico de atendimentos sempre à mão.</p>
+          </article>
+
+          <!-- Serviços -->
+          <article class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14.5 3.5l6 6L10 20H4v-6z"/><path d="M12.5 5.5l6 6"/>
+              </svg>
+            </div>
+            <h3>Serviços &amp; preços</h3>
+            <p>Cadastre serviços por categoria com duração, preço e cor. A agenda já calcula horário e valor automaticamente.</p>
+          </article>
+
+          <!-- Equipe -->
+          <article class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="8" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.5"/><path d="M2.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5M15 19c0-2.3 1.7-3.8 4-3.8"/>
+              </svg>
+            </div>
+            <h3>Equipe &amp; horários</h3>
+            <p>Profissionais com cor própria na agenda, serviços habilitados e jornada de trabalho. Cada um enxerga só o que precisa.</p>
+          </article>
+
+          <!-- Lembretes WhatsApp -->
+          <article class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 11.5a8 8 0 0 1-11.8 7L4 19.5l1.1-4A8 8 0 1 1 20 11.5z"/><path d="M8.5 9.5c0 3 2 5 5 5"/>
+              </svg>
+            </div>
+            <h3>Lembretes por WhatsApp</h3>
+            <p>Confirmação na marcação e lembretes 24h e 1h antes. Menos faltas, agenda cheia e clientes sempre avisados.</p>
+          </article>
+
+          <!-- Temas / aparência -->
+          <article class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-1 2-2 0-1.4-1-1.6-1-2.6 0-.8.7-1.4 1.6-1.4H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="11" r="1"/><circle cx="11" cy="7.5" r="1"/><circle cx="15.5" cy="8.5" r="1"/>
+              </svg>
+            </div>
+            <h3>A cara do seu estúdio</h3>
+            <p>Seis temas visuais prontos — do rosé ao midnight. Combine com a identidade da sua marca em um clique.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AGENDA SHOWCASE ===================== -->
+    <section class="section" id="agenda" style="padding-top:0">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Feito para o balcão e para o bolso</span>
+          <h2 class="display section__title">A mesma agenda, em qualquer tela</h2>
+          <p class="section__sub">Recepção no desktop, profissional no celular entre um atendimento e outro. Tudo sincronizado.</p>
+        </div>
+        <div class="hero__shot" style="max-width:960px;margin-inline:auto">
+          <img src="./assets/screenshot-config.png" width="1430" height="860"
+               alt="Tela de configurações do Glowbook com notificações por WhatsApp, perfis de acesso e seleção de tema." />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PLANOS ===================== -->
+    <section class="section" id="planos" style="padding-top:0">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Planos</span>
+          <h2 class="display section__title">Comece grátis, cresça quando quiser</h2>
+          <p class="section__sub">Sem cartão de crédito. 14 dias de teste em qualquer plano pago.</p>
+        </div>
+
+        <div class="features">
+          <article class="feature">
+            <h3>Free</h3>
+            <p style="font-size:28px;font-weight:600;color:var(--text)">Grátis</p>
+            <p>1 profissional · 5 serviços · 50 clientes. Ideal para começar sozinho(a).</p>
+            <a class="btn btn--ghost" href="http://localhost:5173/signup">Começar grátis</a>
+          </article>
+
+          <article class="feature" style="border-color:var(--accent)">
+            <h3>Pro <span style="font-size:11px;color:var(--accent)">· Recomendado</span></h3>
+            <p style="font-size:28px;font-weight:600;color:var(--text)">R$ 99<span style="font-size:14px;font-weight:400">/mês</span></p>
+            <p>5 profissionais · 50 serviços · 1.000 clientes. Para o estúdio em crescimento.</p>
+            <a class="btn btn--primary" href="http://localhost:5173/signup">Testar 14 dias</a>
+          </article>
+
+          <article class="feature">
+            <h3>Studio</h3>
+            <p style="font-size:28px;font-weight:600;color:var(--text)">R$ 249<span style="font-size:14px;font-weight:400">/mês</span></p>
+            <p>Profissionais, serviços e clientes ilimitados. Para operações maiores.</p>
+            <a class="btn btn--ghost" href="http://localhost:5173/signup">Testar 14 dias</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA BAND ===================== -->
+    <section class="cta-band">
+      <div class="container">
+        <div class="cta-band__inner">
+          <h2 class="display">Pronto para organizar sua agenda?</h2>
+          <p>Comece agora e leve seu estúdio para um fluxo de trabalho mais leve, sem faltas e sem papel.</p>
+          <a class="btn btn--primary" href="http://localhost:5173/signup">Começar grátis</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="#top" aria-label="Glowbook">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3l1.9 4.6L19 9.2l-3.6 3.3.9 5L12 14.9 7.7 17.5l.9-5L5 9.2l5.1-1.6z" />
+            </svg>
+            Glowbook
+          </a>
+          <p>Agenda e gestão para salões, estúdios e profissionais de beleza.</p>
+        </div>
+
+        <div class="footer__col">
+          <h4>Produto</h4>
+          <ul>
+            <li><a href="#recursos">Recursos</a></li>
+            <li><a href="#agenda">Agenda</a></li>
+            <li><a href="http://localhost:5173/login">Acessar plataforma</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="mailto:contato@glowbook.app">contato@glowbook.app</a></li>
+            <li><a href="#top">Suporte</a></li>
+            <li><a href="#top">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> Glowbook. Todos os direitos reservados.</span>
+        <span>Feito com carinho para o universo da beleza.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/theme.js"></script>
+</body>
+</html>

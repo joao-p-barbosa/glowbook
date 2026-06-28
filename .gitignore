@@ -1,0 +1,27 @@
+node_modules/
+dist/
+build/
+.env
+.env.*
+!.env.example
+*.local
+
+# Testes / ferramentas
+.playwright-mcp/
+*.original.md
+
+# Prisma / SQLite
+apps/api/prisma/*.db
+apps/api/prisma/*.db-journal
+apps/api/dev.db
+apps/api/dev.db-journal
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

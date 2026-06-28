@@ -1,0 +1,26 @@
+{
+  "name": "glowbook",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Glowbook — SaaS multi-tenant de gestão e agenda para estúdios, salões e profissionais de beleza.",
+  "workspaces": [
+    "apps/landing",
+    "apps/web",
+    "apps/api",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev:landing": "npm --workspace apps/landing run dev",
+    "dev:web": "npm --workspace apps/web run dev",
+    "dev:api": "npm --workspace apps/api run dev",
+    "dev": "concurrently -n web,api -c cyan,magenta \"npm run dev:web\" \"npm run dev:api\"",
+    "db:generate": "npm --workspace apps/api run db:generate",
+    "db:migrate": "npm --workspace apps/api run db:migrate",
+    "db:seed": "npm --workspace apps/api run db:seed",
+    "lint": "npm run lint --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

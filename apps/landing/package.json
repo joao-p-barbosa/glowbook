@@ -1,0 +1,13 @@
+{
+  "name": "@glowbook/landing",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Landing page pública do Glowbook (estática).",
+  "scripts": {
+    "dev": "serve . -l 5500",
+    "start": "serve . -l 5500"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
