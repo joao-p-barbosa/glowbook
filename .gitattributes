@@ -1,0 +1,10 @@
+# Normaliza fim de linha: LF no repo, conversão automática no checkout
+* text=auto eol=lf
+
+# Binários — nunca normalizar
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary

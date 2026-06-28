@@ -10,6 +10,10 @@ build/
 .playwright-mcp/
 *.original.md
 
+# Vite cache
+.vite/
+**/.vite/
+
 # Prisma / SQLite
 apps/api/prisma/*.db
 apps/api/prisma/*.db-journal
